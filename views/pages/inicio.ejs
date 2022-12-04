@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <%- include('../partials/scripts') -%>
+        <title>Productos</title>
+        <style>
+            .prod {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .card{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+            .img{
+                width: 150px;
+                height: 150px;
+            }
+        </style>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+
+    <section class="prod">
+        <div>
+            <%- include('../partials/cargaProd') -%>
+        </div>
+        <div class="prod">
+            <%- include('../partials/produ') -%>
+        </div>
+    </section>
+</body>
+
+</html>

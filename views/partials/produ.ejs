@@ -1,0 +1,19 @@
+<% if(products.length>0){ %>
+    <% products.forEach(prod=> { %>
+        <div class="card" style="width: 18rem;">
+            <img src=<%=prod.img %> class="card-img-top img" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= prod.nombre %>
+                </h5>
+                <p class="card-text">$<%= prod.precio %>
+                </p>
+                <button type="button" class="btn btn-primary">Cargar al carrito.</button>
+            </div>
+        </div>
+        <% }) %>
+            </tbody>
+            </table>
+            <% }else if(products.length==0){ %>
+                <h3 class=" m-5 alert alert-warning">No hay productos en stock.</h3>
+                <% } %>
