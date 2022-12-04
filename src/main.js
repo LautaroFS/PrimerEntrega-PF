@@ -18,9 +18,9 @@ const messages = [{
 }]
 const products = []
 const prodCarrito = [{
-    nombre: 'coca',
+    nombre: 'Coca',
     precio: 12,
-    img: "as"
+    img: "https://ardiaprod.vtexassets.com/arquivos/ids/228472/Gaseosa-CocaCola-Sabor-Original-225-Lts-_2.jpg?v=637959903979400000"
 }]
 
 io.on('connection', socket => {
