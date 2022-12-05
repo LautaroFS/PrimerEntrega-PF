@@ -5,6 +5,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Imagen</th>
+                <th scope="col">ID</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -18,6 +19,9 @@
                         $<%= productosCarro.precio %>
                     </td>
                     <td><img src=<%=productosCarro.img %> alt="" width=50px height=50px ></td>
+                    <td>
+                        <%= productosCarro.id %>
+                    </td>
                     <td>
                         <form action="/carrito" method="delete" class="delete">
                             <button class="delete"><svg xmlns="http://www.w3.org/2000/svg"
