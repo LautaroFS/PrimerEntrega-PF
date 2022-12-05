@@ -40,7 +40,6 @@ io.on('connection', socket => {
 /* PRODUCTOS */
 app.get('/productos', (req, res) => {
     res.render('inicio', { products })
-    res.json(products)
 })
 
 app.post('/productos', async (req, res) => {
