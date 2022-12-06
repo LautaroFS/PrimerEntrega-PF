@@ -6,8 +6,9 @@
                 <h5 class="card-title">
                     <%= prod.nombre %>
                 </h5>
-                <p class="card-text">$<%= prod.precio %> </p>
-                <p class="card-text"> <%= prod.id %>  </p>
+                <p class="card-text">$<%= prod.precio %>
+                </p>
+                <p class="card-text"> <em> ID: <%= prod.id %> </em> </p>
                 <form action="/carrito" method="post" class=" p-1 rounded">
                     <button type="submit" class="btn btn-primary">Cargar al carrito.</button>
                 </form>
