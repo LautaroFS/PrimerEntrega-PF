@@ -6,30 +6,14 @@ const PORT = 8080
 const app = express()
 const httpServer = new HttpServer(app)
 const io = new IO(httpServer)
-
+const products= require('../db/products.json')
+const messages =require('../db/messages.json')
+const prodCarrito=require('../db/prodCarrito.json')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.set('views', './views/pages')
 app.set('view engine', 'ejs')
-
-const messages = [{
-    author: 'Robot', text: 'Hola deja tu consulta y te la contestaremos.'
-}]
-const products = [
-    {
-        id: 1,
-        "nombre": 'Coca',
-        "precio": 12,
-        img: "https://ardiaprod.vtexassets.com/arquivos/ids/228472/Gaseosa-CocaCola-Sabor-Original-225-Lts-_2.jpg?v=637959903979400000"
-    }
-]
-const prodCarrito = [{
-    nombre: 'Coca',
-    precio: 12,
-    img: "https://ardiaprod.vtexassets.com/arquivos/ids/228472/Gaseosa-CocaCola-Sabor-Original-225-Lts-_2.jpg?v=637959903979400000",
-    id: 0
-}]
 
 io.on('connection', socket => {
 
@@ -55,19 +39,6 @@ app.get('/productos', (req, res) => {
 })
 
 app.post('/productos', async (req, res) => {
-    const { nombre, precio, img } = req.body
-    const prod = { nombre: nombre, precio: precio, img: img }
-
-    if (products.length === 0) {
-        prod.id = 0
-    } else {
-        const idPosterior = products[products.length - 1].id
-        prodId = idPosterior + 1
-    }
-
-    products.push(prod)
-    console.log(products);
-    res.redirect('/productos')
 })
 
 

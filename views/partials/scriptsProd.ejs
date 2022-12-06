@@ -6,30 +6,8 @@
     const socket = io()
 </script>
 <script>
-    function render(data) {
-        const html = data.map(item => {
-            return (`<div> <strong>${item.nombre}</strong>: <em>${item.precio}</em></div>`)
-        }).join(' ')
-
-        document.getElementById('message').innerHTML = html
-    }
-
-
-    function addMessage() {
-        const authorName = document.getElementById('nombre').value
-        const textMsn = document.getElementById('precio').value
-
-        const mensaje = {
-            nombre: authorName,
-            precio: textMsn
-        }
-        document.getElementById('text').value = ''
-        socket.emit('new-message', mensaje)
-        return false
-    }
-
-    function renderProd(data) {
-        const html = data.map(item => {
+    function renderProd(produc) {
+        const html = produc.map(item => {
             return (`
             <div class="card" style="width: 18rem;">
                 <img src=${item.img} class="card-img-top" alt="">
@@ -37,7 +15,8 @@
                     <h5 class="card-title">${item.nombre}</h5>
                     <p class="card-text">$ ${item.precio}</p>
                     <em> <p class="card-text">  <em> ID: </em> ${item.id}</p> 
-                    <a href="#" class="btn btn-primary">Agregar al carrito.</a>
+                    <a href="#" id="addCarrito" class="btn btn-primary">Agregar al carrito.</a>
+                    <button type="submit" id="deleteProd" class="delete">x</button>
                 </div>
             </div>
             `)
@@ -46,7 +25,6 @@
         document.getElementById('productos').innerHTML = html
     }
 
-    
     function addProduct() {
         const prodName = document.getElementById('nombre').value
         const imgProd = document.getElementById('img').value
@@ -72,11 +50,7 @@
         return false
     }
 
-    socket.on('message', data => {
-        render(data)
-    })
-
-    socket.on('products', data => {
-        renderProd(data)
+    socket.on('products', produc => {
+        renderProd(produc)
     })
 </script>
