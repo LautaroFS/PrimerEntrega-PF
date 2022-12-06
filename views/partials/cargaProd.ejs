@@ -1,25 +1,16 @@
 <div class="container">
     <h1>Chat de consulta</h1>
-    <form class="form" onsubmit=" return addMessage(this)">
+    <form class="form" onsubmit=" return addProduct(this)">
         <div class="input-group mb-3">
             <input type="text" id="nombre" class="form-control" placeholder="Nombre">
-            <input type="number" id="precio" class="form-control" placeholder="Mensaaje">
-
+            <input type="text" id="img" class="form-control" placeholder="Imagen">
+            <input type="number" id="cantidad" class="form-control" placeholder="Cantidad">
+            <input type="number" id="id" class="form-control" placeholder="ID">
+            <input type="number" id="precio" class="form-control" placeholder="Precio">
             <button class="btn btn-outline-secondary sendMensaje" type="submit" id="button-addon2">Enviar</button>
+
         </div>
-        <div class="form-floating mb-1">
-            <label for="number">Precio</label>
-            <input type="number" class="form-control" id="precio" placeholder="Precio del producto" name="precio" />
-        </div>
-        <div class="form-floating mb-1">
-            <label for="name">Cantidad</label>
-            <input type="number" class="form-control" id="cantidad" placeholder="Nombre del producto" name="cantidad" />
-        </div>
-        <div class="form-floating mb-1">
-            <label for="text">Imagen</label>
-            <input type="text" class="form-control" id="img" placeholder="Direccion de la foto del producto"
-                name="img" />
-        </div>
-        <button type="submit" class="btn btn-primary">CARGAR</button>
     </form>
+    <div id="productos" class=" mt-4 bgBox">
+    </div>
 </div>

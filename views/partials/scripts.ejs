@@ -8,7 +8,7 @@
 <script>
     function render(data) {
         const html = data.map(item => {
-            return (`<div> <strong>${item.author}</strong>: <em>${item.text}</em></div>`)
+            return (`<div> <strong>${item.nombre}</strong>: <em>${item.precio}</em></div>`)
         }).join(' ')
 
         document.getElementById('message').innerHTML = html
@@ -16,19 +16,67 @@
 
 
     function addMessage() {
-        const authorName = document.getElementById('author').value
-        const textMsn = document.getElementById('text').value
+        const authorName = document.getElementById('nombre').value
+        const textMsn = document.getElementById('precio').value
 
         const mensaje = {
-            author: authorName,
-            text: textMsn
+            nombre: authorName,
+            precio: textMsn
         }
         document.getElementById('text').value = ''
         socket.emit('new-message', mensaje)
         return false
     }
 
+    function renderProd(data) {
+        const html = data.map(item => {
+            return (`
+            <div class="card" style="width: 18rem;">
+                <img src=${item.img} class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">${item.nombre}</h5>
+                    <p class="card-text">$ ${item.precio}</p>
+                    <em> <p class="card-text">  <em> ID: </em> ${item.id}</p> 
+                    <a href="#" class="btn btn-primary">Agregar al carrito.</a>
+                </div>
+            </div>
+            `)
+        }).join(' ')
+
+        document.getElementById('productos').innerHTML = html
+    }
+
+    
+    function addProduct() {
+        const prodName = document.getElementById('nombre').value
+        const imgProd = document.getElementById('img').value
+        const cantidadProd = document.getElementById('cantidad').value
+        const idProd = document.getElementById('id').value
+        const precioProd = document.getElementById('precio').value
+
+        const products = {
+            nombre: prodName,
+            img: imgProd,
+            cantidad: cantidadProd,
+            id: idProd,
+            precio: precioProd
+        }
+
+        document.getElementById('nombre').value = ' '
+        document.getElementById('img').value = ' '
+        document.getElementById('cantidad').value = ' '
+        document.getElementById('id').value = ' '
+        document.getElementById('precio').value = ' '
+
+        socket.emit('new-products', products)
+        return false
+    }
+
     socket.on('message', data => {
         render(data)
+    })
+
+    socket.on('products', data => {
+        renderProd(data)
     })
 </script>

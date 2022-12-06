@@ -16,11 +16,14 @@ app.set('view engine', 'ejs')
 const messages = [{
     author: 'Robot', text: 'Hola deja tu consulta y te la contestaremos.'
 }]
-const products = [{
-    "nombre": 'Coca',
-    "precio": 12,
-    img: "https://ardiaprod.vtexassets.com/arquivos/ids/228472/Gaseosa-CocaCola-Sabor-Original-225-Lts-_2.jpg?v=637959903979400000"
-}]
+const products = [
+    {
+        id: 1,
+        "nombre": 'Coca',
+        "precio": 12,
+        img: "https://ardiaprod.vtexassets.com/arquivos/ids/228472/Gaseosa-CocaCola-Sabor-Original-225-Lts-_2.jpg?v=637959903979400000"
+    }
+]
 const prodCarrito = [{
     nombre: 'Coca',
     precio: 12,
@@ -29,11 +32,20 @@ const prodCarrito = [{
 }]
 
 io.on('connection', socket => {
+
+    /* CHAT */
     console.log('Nuevo cliente conectado!!');
     socket.emit('message', messages)
     socket.on('new-message', data => {
         messages.push(data)
         io.sockets.emit('message', messages)
+    })
+
+    /* PRODUCTOS */
+    socket.emit('products', products)
+    socket.on('new-products', produc => {
+        products.push(produc)
+        io.sockets.emit('products', products)
     })
 })
 
@@ -43,14 +55,14 @@ app.get('/productos', (req, res) => {
 })
 
 app.post('/productos', async (req, res) => {
-    const { nombre, precio, cantidad, img } = req.body
-    const prod = { nombre: nombre, precio: precio, cantidad: cantidad, img: img }
+    const { nombre, precio, img } = req.body
+    const prod = { nombre: nombre, precio: precio, img: img }
 
     if (products.length === 0) {
         prod.id = 0
     } else {
         const idPosterior = products[products.length - 1].id
-        prod.id = idPosterior + 1
+        prodId = idPosterior + 1
     }
 
     products.push(prod)
