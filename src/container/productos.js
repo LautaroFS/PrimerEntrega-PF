@@ -1,5 +1,6 @@
 const ERROR = { error: "Producto no encontrado" }
 const stockCero = "Noy hay productos cargados."
+const prodCarrito = require('../../db/carrito.json')
 const products = [
     {
         nombre: "Fanta",
@@ -73,6 +74,12 @@ class Container {
         const { id } = req.params
         products.splice(parseInt(id) - 1, 1)
         res.render(products)
+    }
+
+    addProdCarrito(req, res) {
+        const { nombre, precio, cantidad, img, id } = req.body
+        const prod = { nombre: nombre, precio: precio, cantidad: cantidad, img: img, id: id }
+        prodCarrito.push(prod)
     }
 }
 module.exports = Container

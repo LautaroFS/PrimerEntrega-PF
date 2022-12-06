@@ -9,6 +9,8 @@ router.get('/:id', container.getById)
 
 router.post('/', container.create)
 
+router.post('/', container.addProdCarrito)
+
 router.put('/:id', container.updateById)
 
 router.delete("/:id", container.deleteById)

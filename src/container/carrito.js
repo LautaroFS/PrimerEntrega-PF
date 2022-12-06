@@ -1,11 +1,6 @@
 const ERROR = { error: "Producto no encontrado" }
 const ceroCarrito = "Carrito vacio."
-const prodCarrito = [{
-    nombre: 'Coca',
-    precio: 12,
-    img: "https://ardiaprod.vtexassets.com/arquivos/ids/228472/Gaseosa-CocaCola-Sabor-Original-225-Lts-_2.jpg?v=637959903979400000",
-    id: 0
-}]
+const prodCarrito = require('../../db/carrito.json')
 
 class Container {
     constructor() {
