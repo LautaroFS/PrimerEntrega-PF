@@ -10,15 +10,11 @@
         const html = data.map(item => {
             return (`<div> <strong>${item.author}</strong>: <em>${item.text}</em></div>`)
         }).join(' ')
-
         document.getElementById('message').innerHTML = html
     }
-
-
     function addMessage() {
         const authorName = document.getElementById('author').value
         const textMsn = document.getElementById('text').value
-
         const mensaje = {
             author: authorName,
             text: textMsn
@@ -27,7 +23,6 @@
         socket.emit('new-message', mensaje)
         return false
     }
-
     socket.on('message', data => {
         render(data)
     })
