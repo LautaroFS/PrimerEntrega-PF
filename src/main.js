@@ -40,8 +40,8 @@ io.on('connection', socket => {
     })
 })
 
-app.use('/api/productos', routerProd)
-app.use('/api/carrito', routerCarrito)
+app.use('/productos', routerProd)
+app.use('/carrito', routerCarrito)
 
 // app.get('/productos', (req, res) => {
 //     res.render('inicio', { products })
@@ -72,31 +72,31 @@ app.use('/api/carrito', routerCarrito)
 
 
 /* CARRITO */
-app.get('/carrito', (req, res) => {
-    res.render('carrito', { prodCarrito })
-})
+// app.get('/carrito', (req, res) => {
+//     res.render('carrito', { prodCarrito })
+// })
 
-app.post('/carrito', (req, res) => {
-    const { nombre, precio, img, id } = req.body
-    const prod = { nombre: nombre, precio: precio, img: img, id: id }
+// app.post('/carrito', (req, res) => {
+//     const { nombre, precio, img, id } = req.body
+//     const prod = { nombre: nombre, precio: precio, img: img, id: id }
 
-    if (prodCarrito.length === 0) {
-        prod.id = 1
-    } else {
-        const idPosterior = prodCarrito[prodCarrito.length - 1].id
-        prod.id = idPosterior + 1
-    }
+//     if (prodCarrito.length === 0) {
+//         prod.id = 1
+//     } else {
+//         const idPosterior = prodCarrito[prodCarrito.length - 1].id
+//         prod.id = idPosterior + 1
+//     }
 
-    prodCarrito.push(prod)
-    console.log(prodCarrito);
-    res.redirect('/carrito')
-})
+//     prodCarrito.push(prod)
+//     console.log(prodCarrito);
+//     res.redirect('/carrito')
+// })
 
-app.delete('/carrito', (req, res) => {
-    const { id } = req.params
-    const prodDelete = prodCarrito.splice(parseInt(id) + 1, 1)
-    res.redirect('/carrito')
-})
+// app.delete('/carrito', (req, res) => {
+//     const { id } = req.params
+//     const prodDelete = prodCarrito.splice(parseInt(id) + 1, 1)
+//     res.redirect('/carrito')
+// })
 
 
 
