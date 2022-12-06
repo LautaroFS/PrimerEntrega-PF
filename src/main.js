@@ -40,8 +40,8 @@ io.on('connection', socket => {
     })
 })
 
-app.use('/productos', routerProd)
-app.use('/carrito', routerCarrito)
+app.use('/api/productos', routerProd)
+app.use('/api/carrito', routerCarrito)
 
 // app.get('/productos', (req, res) => {
 //     res.render('inicio', { products })
