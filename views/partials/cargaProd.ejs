@@ -1,8 +1,11 @@
-<div class="container my-3 d-flex flex-column ">
-    <form action="/productos" method="post" class=" p-1 rounded">
-        <div class="form-floating mb-1">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre del producto" name="nombre" />
+<div class="container">
+    <h1>Chat de consulta</h1>
+    <form class="form" onsubmit=" return addMessage(this)">
+        <div class="input-group mb-3">
+            <input type="text" id="nombre" class="form-control" placeholder="Nombre">
+            <input type="number" id="precio" class="form-control" placeholder="Mensaaje">
+
+            <button class="btn btn-outline-secondary sendMensaje" type="submit" id="button-addon2">Enviar</button>
         </div>
         <div class="form-floating mb-1">
             <label for="number">Precio</label>
