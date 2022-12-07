@@ -6,6 +6,9 @@ const products =require('../db/products.json')
 const routerProd = require('./router/routerProd')
 const routerCarrito = require('./router/routerCarrito')
 
+const routerProd = require('./router/routerProd')
+const routerCarrito=require('./router/routerCarrito')
+
 const app = express()
 const httpServer = new HttpServer(app)
 const io = new IO(httpServer)
@@ -21,7 +24,6 @@ io.on('connection', socket => {
     socket.on('new-products', produc => {
         products.push(produc)
         io.sockets.emit('products', products)
-    })
 })
 
 app.use('/productos', routerProd)

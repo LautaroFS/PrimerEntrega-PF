@@ -50,11 +50,10 @@
         return false
     }
 
+
     socket.on('products', produc => {
         renderProd(produc)
     })
 
-    socket.on('message', data => {
-        render(data)
-    })
+
 </script>
