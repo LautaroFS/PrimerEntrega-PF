@@ -9,18 +9,18 @@
     function renderProd(produc) {
         const html = produc.map(item => {
             return (`
-            <div class="card" style="width: 18rem;">
-                <img src=${item.img} class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">${item.nombre}</h5>
-                    <p class="card-text">$ ${item.precio}</p>
-                    <p class="card-text">Cantida en stock: ${item.cantidad}</p>
-                    <p clas="card-text"> ID: ${item.id}</p>
-                    <a href="#" id="addCarrito" class="btn btn-primary">Agregar al carrito.</a>
-                    <button type="submit" id="deleteProd" class="delete">x</button>
+                <div class="card" style="width: 18rem;">
+                    <img src=${item.img} class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.nombre}</h5>
+                        <p class="card-text">$ ${item.precio}</p>
+                        <p class="card-text">Cantida en stock: ${item.cantidad}</p>
+                        <p clas="card-text"> ID: ${item.id}</p>
+                        <a href="#" id="addCarrito" class="btn btn-primary">Agregar al carrito.</a>
+                        <button type="submit" id="deleteProd" class="delete">x</button>
+                    </div>
                 </div>
-            </div>
-            `)
+                `)
         }).join(' ')
 
         document.getElementById('productos').innerHTML = html

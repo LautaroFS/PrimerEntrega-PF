@@ -4,9 +4,6 @@ const { Server: IO } = require('socket.io')
 const PORT = 8080
 const products =require('../db/products.json')
 const routerProd = require('./router/routerProd')
-const routerCarrito = require('./router/routerCarrito')
-
-const routerProd = require('./router/routerProd')
 const routerCarrito=require('./router/routerCarrito')
 
 const app = express()
@@ -24,6 +21,7 @@ io.on('connection', socket => {
     socket.on('new-products', produc => {
         products.push(produc)
         io.sockets.emit('products', products)
+})
 })
 
 app.use('/productos', routerProd)
