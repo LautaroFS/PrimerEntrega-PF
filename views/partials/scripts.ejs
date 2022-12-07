@@ -14,7 +14,8 @@
                 <div class="card-body">
                     <h5 class="card-title">${item.nombre}</h5>
                     <p class="card-text">$ ${item.precio}</p>
-                    <em> <p class="card-text">  <em> ID: </em> ${item.id}</p> 
+                    <p class="card-text">Cantida en stock: ${item.cantidad}</p>
+                    <p clas="card-text"> ID: ${item.id}</p>
                     <a href="#" id="addCarrito" class="btn btn-primary">Agregar al carrito.</a>
                     <button type="submit" id="deleteProd" class="delete">x</button>
                 </div>
@@ -29,7 +30,7 @@
         const prodName = document.getElementById('nombre').value
         const imgProd = document.getElementById('img').value
         const cantidadProd = document.getElementById('cantidad').value
-        const idProd = document.getElementById('id').value
+        const idProd = x = Math.floor(Math.random() * 9999999)
         const precioProd = document.getElementById('precio').value
 
         const products = {
@@ -43,7 +44,6 @@
         document.getElementById('nombre').value = ' '
         document.getElementById('img').value = ' '
         document.getElementById('cantidad').value = ' '
-        document.getElementById('id').value = ' '
         document.getElementById('precio').value = ' '
 
         socket.emit('new-products', products)
