@@ -1,15 +1,7 @@
 const ERROR = { error: "Producto no encontrado" }
 const stockCero = "Noy hay productos cargados."
 const prodCarrito = require('../../db/carrito.json')
-const products = [
-    {
-        nombre: "Fanta",
-        precio: 12,
-        cantidad: 2,
-        img: "https://ardiaprod.vtexassets.com/arquivos/ids/228472/Gaseosa-CocaCola-Sabor-Original-225-Lts-_2.jpg?v=637959903979400000",
-        id: 1
-    }
-]
+const products = require('../../db/products.json')
 
 class Container {
     constructor() {
@@ -49,7 +41,6 @@ class Container {
 
         products.push(prod)
         console.log(products);
-        res.redirect('/productos')
     }
 
     updateById(req, res) {
