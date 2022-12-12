@@ -9,7 +9,8 @@ class Container {
 
     getAll(req, res) {
         try {
-            res.render('inicio', { products })
+            // res.render('inicio', { products })
+            res.send(products)
         } catch (error) {
             res.render('inicio', stockCero)
         }
@@ -25,7 +26,8 @@ class Container {
         if (!product[0]) {
             res.send(ERROR)
         } else {
-            res.json(product)
+            // res.json(product)
+            res.send(products)
         }
     }
 
@@ -40,7 +42,8 @@ class Container {
         }
 
         products.push(prod)
-        console.log(products);
+        // console.log(products);
+        res.send(products)
     }
 
     updateById(req, res) {
@@ -63,8 +66,9 @@ class Container {
 
     deleteById(req, res) {
         const { id } = req.params
-        products.splice(parseInt(id) - 1, 1)
-        res.render(products)
+        products.splice(parseInt(id), 1)
+        // res.render(products)
+        res.send(products)
     }
 
     addProdCarrito(req, res) {

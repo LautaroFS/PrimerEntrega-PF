@@ -8,7 +8,8 @@ class Container {
 
     getAll(req, res) {
         try {
-            res.render('carrito', { prodCarrito })
+            // res.render('carrito', { prodCarrito })
+            res.send(prodCarrito)
         } catch (error) {
             res.render('carrito', ceroCarrito)
         }
@@ -40,7 +41,8 @@ class Container {
         }
 
         prodCarrito.push(prod)
-        console.log(prodCarrito);
+        res.send(prodCarrito)
+        // console.log(prodCarrito);
         res.redirect('/carrito')
     }
 
@@ -66,7 +68,8 @@ class Container {
     deleteById(req, res) {
         const { id } = req.params
         prodCarrito.splice(parseInt(id) - 1, 1)
-        res.render(prodCarrito)
+        // res.render(prodCarrito)
+        res.send(prodCarrito)
     }
 }
 module.exports = Container
