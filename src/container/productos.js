@@ -35,7 +35,7 @@ class Container {
         const { nombre, precio, cantidad, img, id } = req.body
         const prod = { nombre: nombre, precio: precio, cantidad: cantidad, img: img, id: id }
         if (products.length === 0) {
-            prod.id = 0
+            prod.id = 1
         } else {
             const idPosterior = products[products.length - 1].id
             prod.id = idPosterior + 1
@@ -66,7 +66,7 @@ class Container {
 
     deleteById(req, res) {
         const { id } = req.params
-        products.splice(parseInt(id), 1)
+        products.splice(parseInt(id) - 1, 1)
         // res.render(products)
         res.send(products)
     }
